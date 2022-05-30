@@ -7,4 +7,5 @@ services:
     image: matomo_import_logs
     volumes:
       - ./id_rsa:/root/.ssh/id_rsa:ro
+      - ./cron_root:/tmp/cron_root
       - ./data/logs:/logs

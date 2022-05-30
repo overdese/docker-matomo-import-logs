@@ -1,11 +1,8 @@
-FROM python:3.10.4-slim-bullseye
-RUN apt-get update \
-    && apt-get install -y -qq --no-install-recommends \
-        openssh-client \
-        rsync \
-        cron \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean \
+FROM python:3.10.4-alpine
+
+RUN apk update && apk add --no-cache \
+    openssh-client \
+    rsync \
     && mkdir -p /logs \
     && mkdir -p /root/.ssh/ \
     && echo 'Host *\n\
@@ -20,4 +17,4 @@ COPY --from=matomo:4.9.1-fpm-alpine /usr/src/matomo/misc/log-analytics/ /app
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-
+CMD [ "/usr/sbin/crond", "-f"]
