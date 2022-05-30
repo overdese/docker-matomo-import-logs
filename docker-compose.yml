@@ -5,5 +5,6 @@ services:
     build:
       dockerfile: Dockerfile
     image: matomo_import_logs
-
-
+    volumes:
+      - ./id_rsa:/root/.ssh/id_rsa:ro
+      - ./data/logs:/logs

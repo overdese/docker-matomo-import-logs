@@ -5,9 +5,9 @@ RUN apt-get update \
         rsync \
         cron \
     && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-RUN mkdir -p /root/.ssh/ \
+    && apt-get clean \
+    && mkdir -p /logs \
+    && mkdir -p /root/.ssh/ \
     && echo 'Host *\n\
     StrictHostKeyChecking no \n\
     UserKnownHostsFile /dev/null \n' \
