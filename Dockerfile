@@ -3,6 +3,7 @@ FROM python:3.10.4-alpine
 RUN apk update && apk add --no-cache \
     openssh-client \
     rsync \
+    bash \
     && mkdir -p /logs \
     && mkdir -p /root/.ssh/ \
     && echo 'Host *\n\
