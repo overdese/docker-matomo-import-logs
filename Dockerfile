@@ -11,7 +11,9 @@ RUN apt-get update \
     && echo 'Host *\n\
     StrictHostKeyChecking no \n\
     UserKnownHostsFile /dev/null \n' \
-    > /root/.ssh/config
+    > /root/.ssh/config \
+    && touch /main_script.sh \
+    && chmod +x /main_script.sh
 
 WORKDIR /app
 COPY --from=matomo:4.9.1-fpm-alpine /usr/src/matomo/misc/log-analytics/ /app
