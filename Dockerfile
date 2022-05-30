@@ -6,8 +6,8 @@ RUN apk update && apk add --no-cache \
     bash \
     && mkdir -p /logs \
     && mkdir -p /root/.ssh/ \
-    && echo 'Host *\n\
-    StrictHostKeyChecking no \n\
+    && echo -e 'Host * \n \
+    StrictHostKeyChecking no \n \
     UserKnownHostsFile /dev/null \n' \
     > /root/.ssh/config \
     && touch /main_script.sh \
